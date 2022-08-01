@@ -31,6 +31,16 @@ function App() {
       
   }
 
+
+  const handleDelete = (actorId) => {
+    const getId = contacts.filter(elem => {
+      return elem.id !== actorId;
+    })
+    setContacts(getId);
+  }
+
+  
+
  
   
   return <div className="App">
@@ -39,6 +49,7 @@ function App() {
     <button onClick={randomSelectContact}> Add random contact</button>
     <button onClick={sortByName}> Sort by name</button>
     <button onClick={sortByPopularity}> Sort by popularity</button>
+    
 
     <table className="table">
       <thead className="mainRow">
@@ -48,6 +59,7 @@ function App() {
           <th className="tHeading">Popularity</th>
           <th className="tHeading">Won<br></br>Oscar</th>
           <th className="tHeading">Won<br></br>Emmy</th>
+          <th className="tHeading">Actions</th>
         </tr>
       </thead>
   
@@ -65,7 +77,9 @@ function App() {
               <td>{twoDecimalsPopularity}</td>
               <td>{wonOscar}</td>
               <td>{wonEmmy}</td>
-              
+              <td> 
+                <button onClick={()=> handleDelete(elem.id)}>Delete</button>
+              </td>
             </tr>
       
           
